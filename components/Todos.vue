@@ -9,7 +9,8 @@
         <nuxt-link
           :style="todo.error ? 'color: red' : ''"
           :to="'/todos/' + todo.id"
-          :class="[todo.loading ? 'flex-1 no-underline text-black cursor-not-allowed opacity-50 pointer-events-none' : 'flex-1 no-underline active: text-black visited: text-black']"
+          class="flex-1 no-underline"
+          :class="[todo.loading ? 'text-black cursor-not-allowed opacity-50 pointer-events-none' : 'active: text-black visited: text-black']"
           :key="i"
         >{{ todo.name }}</nuxt-link>
         <span>
@@ -17,13 +18,13 @@
             class="w-4 h-5 cursor-pointer"
             v-if="todo.error"
             :style="todo.loading ? 'pointer-events: none' : ''"
-            src="../assets/retry.svg"
+            src="~/assets/retry.svg"
             @click="retry({ name: todo.name, index: i })"
           />
           <img
             class="w-4 h-5 cursor-pointer"
             :style="todo.loading || todo.error ? 'pointer-events: none' : ''"
-            src="../assets/dustbin.svg"
+            src="~/assets/dustbin.svg"
             @click="deleteTodo({ id: todo.id, index: i })"
           />
         </span>

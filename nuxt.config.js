@@ -37,7 +37,10 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    '~/plugins/axios'
+  ],
+
   /*
    ** Nuxt.js dev-modules
    */
@@ -47,7 +50,9 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  modules: [
+    '@nuxtjs/axios',
+  ],
   /*
    ** Build configuration
    */
@@ -55,6 +60,7 @@ export default {
     /*
      ** You can extend webpack config here
      */
+    transpile: ['axios'],
     extend(config, ctx) {}
   }
 }
