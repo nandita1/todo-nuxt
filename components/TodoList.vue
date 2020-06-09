@@ -8,7 +8,7 @@
       >
         <nuxt-link
           :style="todo.error ? 'color: red' : ''"
-          :to="'/todos/' + todo.id"
+          :to="'/todoItem/' + todo.id"
           class="flex-1 no-underline"
           :class="[todo.loading ? 'text-black cursor-not-allowed opacity-50 pointer-events-none' : 'active: text-black visited: text-black']"
           :key="i"

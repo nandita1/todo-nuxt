@@ -11,12 +11,12 @@
 
 <script>
 import NewTodo from "~/components/NewTodo";
-import Todos from "~/components/Todos";
+import TodoList from "~/components/TodoList";
 export default {
   name: "home",
   components: {
     appNewTodo: NewTodo,
-    appTodos: Todos
+    appTodos: TodoList
   }
 };
 </script>
