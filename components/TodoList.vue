@@ -1,31 +1,36 @@
 <template>
   <div>
-    <ul v-if="todos.length > 0">
-      <li v-for="(todo, i) in todos" :key="i">
+    <ul class="p-0" v-if="todos.length > 0">
+      <li
+        class="list-none flex justify-between my-5 cursor-pointer"
+        v-for="(todo, i) in todos"
+        :key="i"
+      >
         <nuxt-link
           :style="todo.error ? 'color: red' : ''"
-          :to="'/todos/' + todo.id"
-          :class="[todo.loading ? 'disabled' : 'link']"
+          :to="'/todoItem/' + todo.id"
+          class="flex-1 no-underline"
+          :class="[todo.loading ? 'text-black cursor-not-allowed opacity-50 pointer-events-none' : 'active: text-black visited: text-black']"
           :key="i"
-        >
-          {{ todo.name }}
-        </nuxt-link>
+        >{{ todo.name }}</nuxt-link>
         <span>
           <img
+            class="w-4 h-5 cursor-pointer"
             v-if="todo.error"
             :style="todo.loading ? 'pointer-events: none' : ''"
-            src="../assets/retry.svg"
+            src="~/assets/retry.svg"
             @click="retry({ name: todo.name, index: i })"
           />
           <img
+            class="w-4 h-5 cursor-pointer"
             :style="todo.loading || todo.error ? 'pointer-events: none' : ''"
-            src="../assets/dustbin.svg"
+            src="~/assets/dustbin.svg"
             @click="deleteTodo({ id: todo.id, index: i })"
           />
         </span>
       </li>
     </ul>
-    <div class="noTodos" v-else>No Todos here yet!</div>
+    <div class="text-center" v-else>No Todos here yet!</div>
   </div>
 </template>
 
@@ -48,39 +53,3 @@ export default {
 };
 </script>
 
-<style scoped>
-ul {
-  padding: 0;
-}
-li {
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0;
-  cursor: pointer;
-}
-.noTodos {
-  text-align: center;
-}
-img {
-  width: 15px;
-  height: 20px;
-  cursor: pointer;
-}
-.link,
-.disabled {
-  flex: 1;
-  text-decoration: none;
-}
-.link:visited,
-.link:active,
-.link:link {
-  color: black;
-}
-.disabled {
-  color: black;
-  cursor: not-allowed;
-  opacity: 0.5;
-  pointer-events: none;
-}
-</style>
